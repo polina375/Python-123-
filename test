@@ -1,1 +1,20 @@
 import pytest
+from лаба 1 import two_sum
+
+def test_two_sum_example1:
+  nums = [2, 7, 11, 15]
+  target = 9
+  expected = [0, 1]
+  assert two_sum(nums, target) == expected
+
+def test_two_sum_example2:
+  nums = [3, 2, 4]
+  target = 6
+  expected = [1, 2]
+  assert two_sum(nums, target) == expected
+
+def test_two_sum_example3:
+  nums = [3, 3]
+  target = 6
+  expected = [0, 1]
+  assert two_sum(nums, target) == expected
