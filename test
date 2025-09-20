@@ -1,4 +1,4 @@
-import pytest
+import unittest
 from лаба 1 import two_sum
 
 def test_two_sum_example1:
