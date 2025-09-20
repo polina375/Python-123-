@@ -18,3 +18,15 @@ def test_two_sum_example3:
   target = 6
   expected = [0, 1]
   assert two_sum(nums, target) == expected
+
+def test_two_sum_example4:
+  nums = [0, 1, 0, 4]
+  target = 0
+  expected = [0, 2]  
+  assert two_sum(nums, target) == expected
+
+def test_two_sum_example5:
+  nums = [1,2,3,4]
+  target = 9
+  expected = []
+  assert two_sum(nums, target) == expected
