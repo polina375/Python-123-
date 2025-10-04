@@ -8,15 +8,9 @@ def guess_number (x,left, right):
 
     Returns:
         tuple: Кортеж (result-найденное число или None, atts количество попыток)
-
-    Example:
-        >>> guess_number(5, 1, 10)
-        (5, 5)
-        >>> guess_number(15, 1, 10)
-        (None, 10)
         """
     atts=0
-    for numb in range(left,right):
+    for numb in range(left,right+1):
         atts+=1
         if numb==x:
             return numb,atts
@@ -25,9 +19,7 @@ def guess_number (x,left, right):
 
 def binary_guess_number(x,left,right):
     """
-        Найти число в интервале методом бинарного поиска.
-
-        Алгоритм  на каждом шаге уменьшая область поиска в два раза. Начинает с середины интервала
+        Найти число в интервале методом бинарного поиска.Алгоритм  на каждом шаге уменьшая область поиска в два раза. Начинает с середины интервала
         и перемещает границы в зависимости от сравнения.
 
         Args:
@@ -38,15 +30,6 @@ def binary_guess_number(x,left,right):
         Returns:
         tuple: Кортеж (result-найденное число или None,atts-количество попыток)
 
-        Raises:
-            TypeError: Если аргументы не целые числа
-            ValueError: Если left > right (неверный интервал)
-
-        Example:
-            >>> binary_guess_number(50, 1, 100)
-            (50, 6)
-            >>> binary_guess_number(1000, 1, 100)
-            (None, 7)
 
         """
     atts = 0
@@ -60,3 +43,4 @@ def binary_guess_number(x,left,right):
         else:
             right=mid-1
     return None,atts
+

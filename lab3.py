@@ -8,6 +8,7 @@ def gen_bin_tree(height: int, root: int) -> Optional[Dict]:
     Args:
         height: Высота дерева
         root: Значение корневого узла
+        value: Число,которое мы передали в аргемент root
 
     Returns:
         Словарь, представляющий бинарное дерево, или None если высота <= 0
@@ -24,3 +25,4 @@ def gen_bin_tree(height: int, root: int) -> Optional[Dict]:
         'right': gen_bin_tree(height - 1, right_leaf)
     }
 
+print(gen_bin_tree(18,5))
