@@ -1,45 +1,14 @@
+from lab3 import binary_tree
 import unittest
-from lab3 import gen_bin_tree
 
 class TestGenBinTree(unittest.TestCase):
 
-
-    def test_0(self):
-
-        result = gen_bin_tree(0, 10)
-        self.assertIsNone(result)
-
-
-    def test_1(self):
-
-        result = gen_bin_tree(-1, 10)
-        self.assertIsNone(result)
-
-
     def test1(self):
-
-        result = gen_bin_tree(1, 18)
-
-        self.assertIsInstance(result, dict)
-        self.assertEqual(result['value'], 18)
-        self.assertIsNone(result['left'])
-        self.assertIsNone(result['right'])
-
-
+        self.assertEqual(binary_tree(5, 18), {'18': [{'30': [{'66': [{'174': [{'498': [{'1470': []}, {'1012': []}]}, {'364': [{'1068': []}, {'744': []}]}]}, {'148': [{'420': [{'1236': []}, {'856': []}]}, {'312': [{'912': []}, {'640': []}]}]}]}, {'76': [{'204': [{'588': [{'1740': []}, {'1192': []}]}, {'424': [{'1248': []}, {'864': []}]}]}, {'168': [{'480': [{'1416': []}, {'976': []}]}, {'352': [{'1032': []}, {'720': []}]}]}]}]}, {'52': [{'132': [{'372': [{'1092': [{'3252': []}, {'2200': []}]}, {'760': [{'2256': []}, {'1536': []}]}]}, {'280': [{'816': [{'2424': []}, {'1648': []}]}, {'576': [{'1704': []}, {'1168': []}]}]}]}, {'120': [{'336': [{'984': [{'2928': []}, {'1984': []}]}, {'688': [{'2040': []}, {'1392': []}]}]}, {'256': [{'744': [{'2208': []}, {'1504': []}]}, {'528': [{'1560': []}, {'1072': []}]}]}]}]}]})
     def test2(self):
-
-        result = gen_bin_tree(2, 18)
-
-        self.assertEqual(result['value'], 18)
-
-        self.assertEqual(result['left']['value'], 30)
-        self.assertIsNone(result['left']['left'])
-        self.assertIsNone(result['left']['right'])
-
-        self.assertEqual(result['right']['value'], 52)
-        self.assertIsNone(result['right']['left'])
-        self.assertIsNone(result['right']['right'])
-
+        self.assertEqual(binary_tree(2, 5, lambda x:(x-8)*3, lambda x: (x+8)*2),{'5': [{'-9': [{'-51': []}, {'-2': []}]}, {'26': [{'54': []}, {'68': []}]}]})
+    def test3(self):
+        self.assertEqual(binary_tree(0, 2, lambda x:(x-8)*3, lambda x: (x+8)*2), {'2': []})
 if __name__ == '__main__':
 
     unittest.main()
