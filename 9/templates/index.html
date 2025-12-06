@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <style>
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .nav { margin: 20px 0; }
+        .nav a { margin-right: 10px; }
+    </style>
+</head>
+<body>
+    <h1>{{title}}</h1>
+    <div class="author-info">
+        <p><strong>Автор:</strong> {{author_name}}</p>
+        <p><strong>Группа:</strong> {{author_group}}</p>
+    </div>
+
+
+    <div class="nav">
+        <a href="/">Главная</a>
+        <a href="/currencies">Валюты</a>
+        <a href="/users">Пользователи</a>
+        <a href="/show">Показать в консоли</a>
+    </div>
+
+    <h2>Курсы валют</h2>
+    <table>
+        <tr>
+            <th>Код</th>
+            <th>Название</th>
+            <th>Курс</th>
+            <th>Номинал</th>
+        </tr>
+        {% for curr in currencies %}
+        <tr>
+            <td>{{curr.char_code}}</td>
+            <td>{{curr.name}}</td>
+            <td>{{curr.value}}</td>
+            <td>{{curr.nominal}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <div style="margin-top: 20px;">
+        <h3>Быстрые действия:</h3>
+        <a href="/update?USD=95">USD=95</a> |
+        <a href="/update?EUR=96">EUR=96</a> |
+        <a href="/update?GBP=105">GBP=105</a>
+    </div>
+</body>
+</html>

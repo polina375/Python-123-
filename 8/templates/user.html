@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{myapp}}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container mt-4">
+        <p>Автор проекта: {{author_name}}</p>
+        <p>Группа: {{group}}</p>
+        <ul id="navigation">
+        {% for item in navigation %}
+            <li><a href="{{ item.href }}">{{ item.caption }}</a></li>
+        {% endfor %}
+        </ul>
+
+        <h1>{{myapp}} - Пользователь</h1>
+
+        <!-- ОТЛАДКА: покажем, какие данные пришли -->
+        <div class="alert alert-info">
+            <h5>Отладочная информация:</h5>
+            <p>User object: {{ user }}</p>
+            <p>User id: {{ user.id if user else 'None' }}</p>
+            <p>User name: {{ user.name if user else 'None' }}</p>
+            <p>Subscribed currencies count: {{ subscribed_currencies|length }}</p>
+            <p>Subscribed currencies: {{ subscribed_currencies }}</p>
+        </div>
+
+        {% if user %}
+        <div class="card mt-3">
+            <div class="card-body">
+                <h3>ID: {{user.id}}</h3>
+                <h3>Имя: {{user.name}}</h3>
+
+                <h4 class="mt-4">Подписки на валюты:</h4>
+                {% if subscribed_currencies %}
+                <ul>
+                    {% for currency in subscribed_currencies %}
+                    <li>{{currency.name}} ({{currency.char_code}}): {{currency.value}} руб.</li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p>Нет подписок</p>
+                {% endif %}
+            </div>
+        </div>
+        {% else %}
+        <div class="alert alert-warning">Пользователь не найден</div>
+        {% endif %}
+
+        <a href="/users" class="btn btn-primary mt-3">Назад к пользователям</a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
