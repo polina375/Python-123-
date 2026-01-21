@@ -8,10 +8,9 @@ from models.author import Author
 from controllers.databasecontroller import DatabaseController, CurrencyRatesCRUD, UserCRUD
 from controllers.currencycontroller import CurrencyController
 
-# Объекты
 main_author = Author("Полина", "P3123")
 
-# Инициализация БД и контроллеров
+# БД и контроллеров
 db_controller = DatabaseController()
 currency_crud = CurrencyRatesCRUD(db_controller)
 user_crud = UserCRUD(db_controller)
@@ -82,7 +81,7 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
                 users=users
             )
 
-        #  Просмотр одного пользователя
+            """Просмотр одного пользователя"""
         elif path == '/user':
             if 'id' in params and params['id'][0].isdigit():
                 user_id = int(params['id'][0])
@@ -100,7 +99,7 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
             else:
                 html_content = "Не указан ID пользователя"
 
-        #  Список всех валют
+            """ Список всех валют"""
         elif path == '/currencies':
             currencies = currency_controller.list_currencies()
             template = env.get_template('currencies.html')
@@ -108,12 +107,12 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
                 currencies=currencies
             )
 
-        #  Удаление валюты
+            """Удаление валюты"""
         elif path == '/currency/delete':
             if 'id' in params and params['id'][0].isdigit():
                 currency_id = int(params['id'][0])
                 currency_controller.delete_currency(currency_id)
-                # Перенаправляем на список валют
+                """Перенаправляем на список валют"""
                 self.send_response(302)
                 self.send_header('Location', '/currencies')
                 self.end_headers()

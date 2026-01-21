@@ -1,4 +1,19 @@
 class Currency:
+    """
+       Класс представляет валюту в системе.
+
+       Использует как модель (Model) в архитектуре MVC.
+       Инкапсулирует данные о валюте и выполняет их валидацию
+       через свойства (property).
+
+       Arg:
+           id (int): Уникальный идентификатор валюты.
+           num_code (str): Числовой код валюты (3 цифры).
+           char_code (str): Символьный код валюты (3 символа)
+           name (str): Полное название валюты.
+           value (float): Курс валюты.
+           nominal (int): Номинал валюты.
+       """
     def __init__(self, currency_id: int, num_code: str, char_code: str,
                  name: str, value: float, nominal: int):
         self.__id = currency_id
@@ -14,6 +29,7 @@ class Currency:
 
     @id.setter
     def id(self, currency_id: int):
+        #  Устанавливает идентификатор валюты.
         if isinstance(currency_id, int) and currency_id > 0:
             self.__id = currency_id
         else:
@@ -21,10 +37,12 @@ class Currency:
 
     @property
     def num_code(self):
+        #  Возвращает числовой код валюты
         return self.__num_code
 
     @num_code.setter
     def num_code(self, code: str):
+        #  Устанавливает числовой код валюты
         if isinstance(code, str) and len(code) == 3 and code.isdigit():
             self.__num_code = code
         else:
@@ -32,10 +50,12 @@ class Currency:
 
     @property
     def char_code(self):
+        #  Возвращает символьный код валюты
         return self.__char_code
 
     @char_code.setter
     def char_code(self, code: str):
+        # Устанавливает символьный код валюты
         if isinstance(code, str) and len(code) == 3:
             self.__char_code = code.upper()
         else:
@@ -43,10 +63,12 @@ class Currency:
 
     @property
     def name(self):
+        #  Возвращает название валюты
         return self.__name
 
     @name.setter
     def name(self, name: str):
+        # Устанавливает название валюты
         if isinstance(name, str) and len(name) >= 2:
             self.__name = name
         else:
@@ -54,10 +76,12 @@ class Currency:
 
     @property
     def value(self):
+        #  Возвращает курс валюты
         return self.__value
 
     @value.setter
     def value(self, value: float):
+        #     Устанавливает курс валюты.
         if isinstance(value, (int, float)) and value > 0:
             self.__value = float(value)
         else:
@@ -65,10 +89,12 @@ class Currency:
 
     @property
     def nominal(self):
+        # Возвращает номинал валюты
         return self.__nominal
 
     @nominal.setter
     def nominal(self, nominal: int):
+        #   Устанавливает номинал валюты
         if isinstance(nominal, int) and nominal > 0:
             self.__nominal = nominal
         else:

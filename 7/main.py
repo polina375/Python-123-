@@ -51,14 +51,13 @@ def get_currencies(
         currency_codes: Список кодов валют (USD, EUR)
         url: URL API ЦБ РФ
 
-        dict: {"USD": 93.25, "EUR": 101.7}  float значения
+        dict: {"USD": 93.25, "EUR": 101.7}
 
         ConnectionError: API недоступен
         ValueError: Некорректный JSON
         KeyError: Нет ключа "Valute" или валюта не найдена
         TypeError: Курс валюты не число
     """
-    #  Запрос к API, ConnectionError при проблемах
     try:
         response = requests.get(url, timeout=10)
         response.raise_for_status()
@@ -105,7 +104,7 @@ try:
 except Exception as e:
     print(f"Исключение проброшено наружу: {e}")
 
-    print("=== Тест логирования в StringIO ===")
+    """Тест логирования в StringIO """
 
     import io
 

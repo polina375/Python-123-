@@ -7,8 +7,7 @@ class Currency:
     def __init__(self, num_code: str, char_code: str, name: str, value: float, nominal: int, id: int = None):
         """
         Инициализирует объект Currency.
-
-        num_code: Цифровой код валюты char_code: Символьный код валюты name: Название валюты value: Курс валюты nominal: Номинал валюты id: Уникальный идентификатор
+num_code: Цифровой код валюты char_code: Символьный код валюты name: Название валюты value: Курс валюты nominal: Номинал валюты id: Уникальный идентификатор
         """
         self.__id = id
         self.__num_code = num_code
@@ -63,7 +62,8 @@ class Currency:
 
     @value.setter
     def value(self, val: float) -> None:
-        """Устанавливает курс валюты с валидацией   Курс валюты (должен быть >= 0)
+        """Устанавливает курс валюты с валидацией
+        Курс валюты (должен быть >= 0)
              ValueError: Если курс отрицательный
         """
         if val < 0:

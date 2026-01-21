@@ -17,5 +17,4 @@ def get_currencies(currency_list=None):
 
         return result
     except:
-        # Если API не работает, возвращаем тестовые данные
         return {'USD': 90.0, 'EUR': 100.0, 'GBP': 115.0}

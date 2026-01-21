@@ -133,5 +133,5 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
 
 
 httpd = HTTPServer(('localhost', 8080), SimpleHTTPRequestHandler)
-print('Сервер запущен на http://localhost:8080')
+print('Сервер на http://localhost:8080')
 httpd.serve_forever()

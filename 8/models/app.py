@@ -15,7 +15,7 @@ class App():
         if type(name) is str and len(name) > 0:
             self.__name = name
         else:
-            raise ValueError('Название должно быть непустой строкой')
+            raise ValueError('Название непустой строкой')
 
     @property
     def version(self):
@@ -26,7 +26,7 @@ class App():
         if type(version) is str and len(version) > 0:
             self.__version = version
         else:
-            raise ValueError('Версия должна быть непустой строкой')
+            raise ValueError('Версия непустой строкой')
 
     @property
     def author(self):
@@ -37,4 +37,4 @@ class App():
         if type(author) is Author:
             self.__author = author
         else:
-            raise TypeError('Автор должен быть объектом Author')
+            raise TypeError('Автор объектом Author')

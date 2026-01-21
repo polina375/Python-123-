@@ -1,5 +1,4 @@
-# models/author.py
-# ФАЙЛ ДОЛЖЕН БЫТЬ СОЗДАН В КАТАЛОГЕ ПРОЕКТА
+
 
 
 class Author:
