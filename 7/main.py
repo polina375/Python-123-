@@ -5,7 +5,29 @@ from requests.exceptions import RequestException
 import logging
 
 def logger(func=None, *, handle=sys.stdout):
-    # Проверка вызван ли декоратор как @logger или @logger(...)
+    """
+        Декоратор для логирования вызовов функций.
+
+        Может использоваться как с параметрами, так и без них:
+            @logger
+            @logger(handle=...)
+
+        При каждом вызове функции логируются:
+        - имя функции,
+        - позиционные и именованные аргументы,
+        - возвращаемое значение,
+        - возникшие исключения.
+
+        Parameters:
+            func (callable, optional): Декорируемая функция.
+                Если None, декоратор был вызван с параметрами.
+            handle (file-like object or logging.Logger): Объект,
+                в который производится логирование.
+                По умолчанию sys.stdout.
+
+        Returns:
+            callable: Обёртка вокруг декорируемой функции.
+        """
     if func is None:
         # @logger(handle=...) - нужно вернуть декоратор
         return lambda f: logger(f, handle=handle)
@@ -13,6 +35,20 @@ def logger(func=None, *, handle=sys.stdout):
     # @logger декорируем сразу
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
+        """
+                Обёртка над функцией, выполняющая логирование её вызова.
+
+                Parameters:
+                    *args: Позиционные аргументы функции.
+                    **kwargs: Именованные аргументы функции.
+
+                Returns:
+                    Any: Результат выполнения декорируемой функции.
+
+                Raises:
+                    Exception: Повторно выбрасывает исключения,
+                        возникшие внутри декорируемой функции.
+                """
         if isinstance(handle, logging.Logger):
             handle.info(f"Вызов {func.__name__} с args={args}, kwargs={kwargs}")
             try:
