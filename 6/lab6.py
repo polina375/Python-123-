@@ -3,25 +3,33 @@ import matplotlib.pyplot as plt
 
 
 def left_branch(root):
+    """Вычисляет значение левого дочернего узла."""
     return (root - 8) * 3
 
 
 def right_branch(root):
+    """Вычисляет значение правого дочернего узла."""
     return (root + 8) * 2
 
 
 def gen_bin_tree(height: int, root: int, l_b=left_branch, r_b=right_branch):
-    """Генерирует бинарное дерево в виде вложенной словарной структуры."""
+    """Генерирует бинарное дерево рекурсивно.
 
-    d = {}
+    Параметры:
+        height (int): Высота дерева (неотрицательное число).
+        root (int): Значение корневого узла.
+        l_b (Callable): Функция вычисления левого потомка.
+        r_b (Callable): Функция вычисления правого потомка."""
+
+    tree = {}
     if height > 0:
         l_branch, r_branch = l_b(root), r_b(root)
-        d[root] = [gen_bin_tree(height - 1, l_branch, l_b=left_branch, r_b=right_branch),
+        tree[root] = [gen_bin_tree(height - 1, l_branch, l_b=left_branch, r_b=right_branch),
                    gen_bin_tree(height - 1, r_branch, l_b=left_branch, r_b=right_branch)]
-        return d
+        return tree
     else:
-        d[root] = []
-        return d
+        tree [root] = []
+        return tree
 
 def gen_bin_tree1(height: int, root: int, l=left_branch, r=right_branch):
     """Генерирует бинарное дерево в виде  словаря нерекурсивно
