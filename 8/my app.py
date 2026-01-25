@@ -42,7 +42,19 @@ user_currencies = [
 ]
 
 class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
+    """
+       Обработчик HTTP-запросов.
+
+       Обрабатывает GET-запросы и возвращает HTML-страницы,
+       сгенерированные с помощью шаблонов Jinja2.
+       """
     def do_GET(self):
+        """
+           Обработчик HTTP-запросов.
+
+           Обрабатывает GET-запросы и возвращает HTML-страницы,
+           сгенерированные с помощью шаблонов Jinja2.
+           """
         path = self.path.split('?')[0]  # Убираем параметры
 
         if path == '/':
