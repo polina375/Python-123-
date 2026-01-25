@@ -16,6 +16,7 @@ def gen_bin_tree1(height: int, root: int, l=left_branch, r=right_branch):
     if height < 0:
         return {}
 
+
     tree = {str(root): []}
     current_level = [(root, str(root))]
 
